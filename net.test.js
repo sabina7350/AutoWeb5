@@ -85,11 +85,11 @@ describe("Go to movies tests", () => {
 
 
   test("Покупка билета на занятое место", async () => {
-    await clickElement(page, ".page-nav__day-number");
-    await clickElement(page, '[data-seance-id= "217"]');
+    await clickElement(page,".page-nav__day:nth-child(2)");
+    await clickElement(page, ".movie-seances__hall a");
 
     await page.waitForSelector(".buying-scheme__wrapper");
-    await clickElement(page, ".buying-scheme__wrapper > :nth-child(6) > :nth-child(2)");
+    await clickElement(page, ".buying-scheme__wrapper > :nth-child(3) > :nth-child(3)");
 
     const button = await page.$eval(".acceptin-button", (el) => el.disabled);
     expect(button).equal(true);

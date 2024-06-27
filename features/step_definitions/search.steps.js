@@ -127,8 +127,8 @@ When("выбирает время сеанса фильма на 13-00", async f
 
 
 When("переходит по расписанию показа фильмов", async function () {
-  await clickElement(this.page, ".page-nav__day-number");
-  return await clickElement(page, '[data-seance-id= "217"]');
+  await clickElement(this.page, ".page-nav__day:nth-child(2)");
+  return await clickElement(page, '.movie-seances__hall a');
 });
 
 
@@ -136,7 +136,7 @@ Then(
   "пытается выбрать место, которое занято и получает результат",
   async function () {
     await this.page.waitForSelector(".buying-scheme__wrapper");
-    await clickElement(page, ".buying-scheme__wrapper > :nth-child(6) > :nth-child(2)");
+    await clickElement(page, ".buying-scheme__wrapper > :nth-child(3) > :nth-child(3)");
 
     const button = await page.$eval(".acceptin-button", (el) => el.disabled);
     expect(button).equal(true);
